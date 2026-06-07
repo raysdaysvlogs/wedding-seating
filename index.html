@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fffdf8" />
+  <title>Find Your Table — Victoria & Raymond</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Offline caching -->
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+
+  <!-- Decorative background -->
+  <div class="bg-ornament top-left"></div>
+  <div class="bg-ornament top-right"></div>
+  <div class="bg-ornament bottom-left"></div>
+  <div class="bg-ornament bottom-right"></div>
+
+  <main class="container">
+
+    <!-- SEARCH VIEW -->
+    <section id="view-search" class="view active">
+      <header class="site-header">
+        <div class="monogram" aria-hidden="true">V&amp;R</div>
+        <p class="wedding-date">June 2026</p>
+        <h1 class="headline">Find Your Table</h1>
+        <p class="subheadline">Welcome to our wedding!<br>Enter your name below to find your assigned table.</p>
+      </header>
+
+      <div class="card search-card">
+        <div class="field-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="e.g. John" autocomplete="given-name" autocorrect="off" autocapitalize="words" />
+        </div>
+        <div class="field-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="e.g. Smith" autocomplete="family-name" autocorrect="off" autocapitalize="words" />
+        </div>
+
+        <!-- Live results appear here while typing -->
+        <div id="live-results" class="live-results" aria-live="polite" aria-label="Search suggestions"></div>
+
+        <button id="btn-search" class="btn-primary" onclick="handleSearch()">
+          <span class="btn-text">Find My Table</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+
+      <div class="admin-toggle">
+        <button class="btn-link" onclick="toggleAdmin()">⚙ Update Guest List</button>
+      </div>
+
+      <!-- Admin panel -->
+      <div id="admin-panel" class="admin-panel hidden">
+        <div class="card admin-card">
+          <h2 class="admin-title">Update Guest List</h2>
+          <p class="admin-desc">Upload a CSV file with columns: <code>First Name, Last Name, Table</code><br>
+          Optional extra columns: <code>Meal, Seat</code></p>
+          <label class="upload-area" for="csv-upload" id="upload-label">
+            <span class="upload-icon">📄</span>
+            <span class="upload-text">Click to upload CSV<br><small>or drag & drop</small></span>
+            <input type="file" id="csv-upload" accept=".csv" style="display:none" onchange="handleCSVUpload(event)" />
+          </label>
+          <p id="upload-status" class="upload-status"></p>
+          <div class="admin-divider"><span>or paste CSV data below</span></div>
+          <textarea id="csv-paste" class="csv-paste" placeholder="First Name,Last Name,Table&#10;John,Smith,12&#10;Sarah,Wong,5" rows="6"></textarea>
+          <button class="btn-secondary" onclick="loadPastedCSV()">Load Guest Data</button>
+          <p class="admin-note">Guest data is saved in your browser and works offline.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RESULT VIEW -->
+    <section id="view-result" class="view">
+      <header class="site-header compact">
+        <div class="monogram small" aria-hidden="true">V&amp;R</div>
+      </header>
+
+      <div id="result-found" class="hidden">
+        <div class="card result-card found">
+          <p class="result-welcome">Welcome,</p>
+          <p class="result-name" id="result-name"></p>
+          <div class="divider-line"></div>
+          <p class="result-label">You are seated at</p>
+          <div class="table-badge">
+            <span class="table-label-text">TABLE</span>
+            <span class="table-number" id="table-number"></span>
+          </div>
+          <div id="extra-info" class="extra-info hidden">
+            <p id="meal-info" class="hidden"></p>
+            <p id="seat-info" class="hidden"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="result-multiple" class="hidden">
+        <div class="card result-card multiple">
+          <p class="result-label large">We found multiple matches:</p>
+          <div id="multiple-list" class="multiple-list"></div>
+        </div>
+      </div>
+
+      <div id="result-notfound" class="hidden">
+        <div class="card result-card notfound">
+          <div class="notfound-icon" aria-hidden="true">✦</div>
+          <p class="notfound-title">We couldn't find your seating assignment.</p>
+          <p class="notfound-sub">Please see a wedding coordinator for assistance.</p>
+        </div>
+      </div>
+
+      <button class="btn-back" onclick="goBack()">← Search Again</button>
+    </section>
+
+  </main>
+
+  <script src="js/guests.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

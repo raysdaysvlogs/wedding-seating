@@ -1,0 +1,480 @@
+/* ========================================
+   WEDDING SEATING — ELEGANT GOLD & IVORY
+   ======================================== */
+
+:root {
+  --gold:        #b8963e;
+  --gold-light:  #d4af6a;
+  --gold-pale:   #f0e4c4;
+  --gold-faint:  #faf5e8;
+  --ivory:       #fffdf8;
+  --charcoal:    #2c2825;
+  --brown-mid:   #6b5b45;
+  --brown-light: #a0907a;
+  --white:       #ffffff;
+  --shadow:      0 4px 32px rgba(90, 65, 30, 0.10);
+  --shadow-card: 0 8px 48px rgba(90, 65, 30, 0.13);
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-weight: 300;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Decorative corner ornaments ── */
+.bg-ornament {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M10,10 Q100,10 100,100 Q100,10 190,10' stroke='%23b8963e' stroke-width='1.5' fill='none'/%3E%3Cpath d='M10,10 Q10,100 100,100 Q10,100 10,190' stroke='%23b8963e' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='10' cy='10' r='4' fill='%23b8963e'/%3E%3Ccircle cx='100' cy='100' r='3' fill='%23b8963e'/%3E%3Cpath d='M30,10 Q30,30 10,30' stroke='%23b8963e' stroke-width='1' fill='none'/%3E%3Cpath d='M10,30 Q10,50 30,50' stroke='%23b8963e' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.top-left    { top: 0; left: 0; }
+.top-right   { top: 0; right: 0; transform: scaleX(-1); }
+.bottom-left { bottom: 0; left: 0; transform: scaleY(-1); }
+.bottom-right{ bottom: 0; right: 0; transform: scale(-1); }
+
+/* ── Layout ── */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Views ── */
+.view { display: none; animation: fadeSlideUp 0.45s ease both; }
+.view.active { display: block; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ── */
+.site-header { text-align: center; padding: 32px 0 28px; }
+.site-header.compact { padding: 20px 0 16px; }
+
+.monogram {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.monogram.small { font-size: 1.6rem; }
+
+.wedding-date {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 20px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.subheadline {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--brown-mid);
+  font-weight: 300;
+}
+
+/* Gold rule divider under header */
+.site-header::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1.5px;
+  background: var(--gold-light);
+  margin: 22px auto 0;
+}
+.site-header.compact::after { margin-top: 12px; }
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(184,150,62,0.12);
+  padding: 32px 28px;
+  margin-top: 24px;
+}
+
+/* ── Form fields ── */
+.field-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-mid);
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  background: var(--gold-faint);
+  border: 1.5px solid var(--gold-pale);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+input[type="text"]:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184,150,62,0.12);
+  background: var(--white);
+}
+input[type="text"]::placeholder { color: var(--brown-light); font-style: italic; }
+
+/* ── Live results ── */
+.live-results {
+  margin: -8px 0 18px;
+  overflow: hidden;
+}
+
+.live-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--gold-faint);
+  border: 1px solid var(--gold-pale);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  animation: fadeSlideUp 0.2s ease both;
+}
+.live-result-item:hover,
+.live-result-item:focus {
+  background: var(--gold-pale);
+  border-color: var(--gold-light);
+  outline: none;
+}
+.live-result-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--charcoal);
+}
+.live-result-table {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: white;
+  border: 1px solid var(--gold-pale);
+  border-radius: 20px;
+  padding: 3px 12px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 18px rgba(184,150,62,0.35);
+  margin-top: 6px;
+}
+.btn-primary:hover  { background: var(--gold-light); box-shadow: 0 6px 24px rgba(184,150,62,0.45); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-icon { font-size: 1.1rem; transition: transform 0.2s; }
+.btn-primary:hover .btn-icon { transform: translateX(4px); }
+
+.btn-secondary {
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--gold-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+}
+.btn-secondary:hover { background: var(--gold-faint); }
+
+.btn-back {
+  display: block;
+  margin: 24px auto 0;
+  background: none;
+  border: none;
+  color: var(--brown-mid);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: color 0.2s;
+}
+.btn-back:hover { color: var(--gold); }
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--brown-light);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.2s;
+}
+.btn-link:hover { color: var(--gold); }
+
+/* ── Admin toggle ── */
+.admin-toggle { text-align: center; margin-top: 20px; }
+
+.admin-panel { margin-top: 0; }
+.admin-card { background: var(--ivory); border-color: var(--gold-pale); }
+
+.admin-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.admin-desc { font-size: 0.82rem; color: var(--brown-mid); line-height: 1.6; margin-bottom: 20px; }
+.admin-desc code { font-family: monospace; background: var(--gold-pale); padding: 1px 5px; border-radius: 4px; font-size: 0.78rem; }
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px dashed var(--gold-pale);
+  border-radius: var(--radius-sm);
+  padding: 28px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-align: center;
+}
+.upload-area:hover { background: var(--gold-faint); border-color: var(--gold-light); }
+.upload-icon { font-size: 2rem; }
+.upload-text { font-size: 0.88rem; color: var(--brown-mid); line-height: 1.5; }
+.upload-text small { font-size: 0.78rem; color: var(--brown-light); }
+.upload-status { font-size: 0.82rem; color: var(--gold); text-align: center; margin-top: 10px; min-height: 20px; }
+
+.admin-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 16px;
+  color: var(--brown-light);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+}
+.admin-divider::before,
+.admin-divider::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+
+.csv-paste {
+  font-family: monospace;
+  font-size: 0.82rem;
+  resize: vertical;
+  background: var(--white);
+}
+
+.admin-note { font-size: 0.75rem; color: var(--brown-light); text-align: center; margin-top: 14px; }
+
+/* ── Result Cards ── */
+.result-card { text-align: center; padding: 40px 28px; }
+
+.result-welcome {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--brown-light);
+  margin-bottom: 4px;
+}
+.result-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.divider-line {
+  width: 60px;
+  height: 1px;
+  background: var(--gold-light);
+  margin: 0 auto 24px;
+}
+
+.result-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-mid);
+  margin-bottom: 16px;
+}
+.result-label.large { font-size: 0.9rem; margin-bottom: 20px; }
+
+.table-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--white);
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(184,150,62,0.40), inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 0.15s;
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.table-label-text {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+.table-number {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.extra-info {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gold-pale);
+}
+.extra-info p {
+  font-size: 0.9rem;
+  color: var(--brown-mid);
+  margin-bottom: 6px;
+}
+.extra-info p span { font-weight: 500; color: var(--charcoal); }
+
+/* Multiple matches */
+.multiple-list { display: flex; flex-direction: column; gap: 12px; }
+
+.match-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--gold-faint);
+  border: 1px solid var(--gold-pale);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.match-item:hover { background: var(--gold-pale); }
+.match-name { font-family: var(--font-display); font-size: 1.1rem; }
+.match-table { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+/* Not found */
+.notfound-icon { font-size: 2.5rem; color: var(--gold-light); margin-bottom: 16px; }
+.notfound-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.notfound-sub { font-size: 0.92rem; color: var(--brown-mid); line-height: 1.6; }
+
+/* ── Utilities ── */
+.hidden { display: none !important; }
+
+/* ── Responsive polish ── */
+@media (max-width: 380px) {
+  .headline { font-size: 2.2rem; }
+  .table-badge { width: 150px; height: 150px; }
+  .table-number { font-size: 4rem; }
+  .card { padding: 24px 18px; }
+}
+
+@media (min-width: 600px) {
+  .container { padding-top: 40px; }
+  .headline { font-size: 3.2rem; }
+}
+
+/* ── Drag-over state ── */
+.upload-area.drag-over {
+  background: var(--gold-pale);
+  border-color: var(--gold);
+}

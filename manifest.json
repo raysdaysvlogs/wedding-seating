@@ -1,0 +1,16 @@
+{
+  "name": "Find Your Table — Victoria & Raymond",
+  "short_name": "Find My Table",
+  "description": "Wedding seating lookup for Victoria & Raymond's wedding",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#b8963e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='32' fill='%23b8963e'/><text x='96' y='130' text-anchor='middle' font-size='90' font-family='Georgia,serif' fill='white'>V</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -9,18 +9,14 @@
 
   // ── Init ───────────────────────────────────────────────
   function init() {
-    // Load from window (guests.js) first
+    // Always load directly from guests.js — never cache locally
+    // This ensures updates to guests.js are always reflected immediately
     if (window.GUEST_LIST && window.GUEST_LIST.length) {
       guestList = window.GUEST_LIST;
     }
-    // Check localStorage for an updated list
-    const stored = localStorage.getItem('weddingGuestList');
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        if (parsed && parsed.length) guestList = parsed;
-      } catch (e) { /* ignore */ }
-    }
+
+    // Clear any old cached data from previous versions
+    localStorage.removeItem('weddingGuestList');
 
     bindEvents();
     registerServiceWorker();
@@ -244,7 +240,6 @@
     if (guests.length === 0) { setStatus('No valid guests found in CSV.'); return; }
 
     guestList = guests;
-    localStorage.setItem('weddingGuestList', JSON.stringify(guestList));
     setStatus(`✓ ${guests.length} guests loaded successfully!`);
   }
 

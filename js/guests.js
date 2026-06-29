@@ -226,7 +226,7 @@ window.GUEST_LIST = [
   {"firstName": "Tuan", "lastName": "Tang", "table": "16"},
   {"firstName": "Hannah", "lastName": "Nguyen", "table": "16"},
   {"firstName": "Thoa", "lastName": "Ngo", "table": "21"},
-];  {"firstName": "Luciano", "lastName": "Della Civita", "table": "21"},
+  {"firstName": "Luciano", "lastName": "Della Civita", "table": "21"},
   {"firstName": "Mai", "lastName": "Vo", "table": "21"},
   {"firstName": "Lien", "lastName": "Tang", "table": "21"},
   {"firstName": "Phouc", "lastName": "Hua", "table": "21"},
